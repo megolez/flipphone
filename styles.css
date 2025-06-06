@@ -1,0 +1,99 @@
+/* -------------------------------------------------------------------
+   1) Basic Reset & Centering
+   ------------------------------------------------------------------- */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: #ffffff;
+}
+
+/* -------------------------------------------------------------------
+   2) Container & Image Styling
+   ------------------------------------------------------------------- */
+.phone-container {
+  position: relative;
+  width: 400px;          /* Increased from 300px to 400px so the phone is larger */
+  user-select: none;
+}
+
+.phone-image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* -------------------------------------------------------------------
+   3) Notification bubble overlay (updated per your requests)
+   ------------------------------------------------------------------- */
+.notification {
+  position: absolute;
+  top: 36%;               /* Moved down from 22% so the text is lower */
+  left: 50%;
+  transform: translateX(-50%) translateY(-10%);
+
+  width: 138px;           /* Narrower bubble to fit screen */
+  padding: 6px 8px;
+  background-color: transparent;
+  color: #ffffff;
+
+  font-family: "VT323", monospace;
+  font-size: 14px;        /* Smaller font makes it less bold */
+  font-weight: 200;       /* Normal weight */
+
+  letter-spacing: 0.5px;
+  text-align: center;
+  border-radius: 3px;     /* Slightly smaller radius */
+
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* -------------------------------------------------------------------
+   4) Shake keyframes 
+   ------------------------------------------------------------------- */
+@keyframes shake {
+  0%   { transform: translate(0, 0) rotate(0deg); }
+  10%  { transform: translate(-2px, 1px) rotate(-1deg); }
+  20%  { transform: translate(2px, -1px) rotate(1deg); }
+  30%  { transform: translate(-2px, 1px) rotate(-1deg); }
+  40%  { transform: translate(2px, -1px) rotate(1deg); }
+  50%  { transform: translate(-1px, 1px) rotate(0deg); }
+  60%  { transform: translate(2px, -1px) rotate(1deg); }
+  70%  { transform: translate(-2px, 1px) rotate(-1deg); }
+  80%  { transform: translate(2px, -1px) rotate(1deg); }
+  90%  { transform: translate(-2px, 1px) rotate(-1deg); }
+  100% { transform: translate(0, 0) rotate(0deg); }
+}
+
+/* -------------------------------------------------------------------
+   5) Fade‐in & slide‐up for the notification 
+   ------------------------------------------------------------------- */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(0);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(-10px);
+  }
+}
+
+/* -------------------------------------------------------------------
+   6) Triggered states 
+   ------------------------------------------------------------------- */
+.phone-container.shake {
+  animation: shake 2.0s ease-in-out;
+}
+
+.phone-container.shake .notification {
+  animation: fadeInUp 0.4s ease-out 2.0s forwards;
+}

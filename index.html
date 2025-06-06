@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Flip‐Phone Typewriter Notification</title>
+
+  <!-- Import a vintage/pixel‐style font (VT323) from Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=VT323&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Link to our custom CSS -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!--
+    1) We’ve increased the container width to 400px (in CSS).
+    2) The .notification div now contains an inner <span id="typewriterText">,
+       which we will fill one character at a time via JavaScript.
+  -->
+  <div id="phoneWrapper" class="phone-container">
+    <img
+      src="phone.png"
+      alt="Flip Phone"
+      class="phone-image"
+    />
+
+    <div class="notification">
+      <span id="typewriterText"></span>
+      <!-- You could add a blinking cursor if you like, e.g. <span class="cursor">█</span> -->
+    </div>
+  </div>
+
+  <!-- Our script will: 
+       1) trigger the shake animation on page load 
+       2) after the shake finishes, “type” each character of the message
+  -->
+  <script src="script.js"></script>
+</body>
+</html>
